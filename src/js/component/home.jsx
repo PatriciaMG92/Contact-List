@@ -110,6 +110,9 @@ const Home = () => {
 			}
 		})
 		.then(resp=>{
+			console.log(resp.ok); 
+			console.log(resp.status);
+			console.log(resp.text()); 
 			return resp.json();
 		})
 		.then(data=>{
