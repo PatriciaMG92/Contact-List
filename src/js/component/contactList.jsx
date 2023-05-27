@@ -5,9 +5,17 @@ import SingleContact from "./singleContact.jsx";
 //create your first component
 const ContactList = ({changeStateToTrue, allContacts, setAllContacts, getOneContact}) => {
    
-	const updateOneSingleContact=(id)=>{
-		const newContact=allContacts.filter(user=>user.id == id);
-		setAllContacts(newContact);
+	const updateOneSingleContact=(id, fullNameInput, email, phoneInput, addressInput)=>{
+		const contact = allContacts.get(email)
+		const newContact = {
+			...contact,
+			id: id,
+			name : fullNameInput,
+			phone: phoneInput,
+			address: addressInput
+		}
+		allContacts.set(email, newContact)
+		setAllContacts(new Map(allContacts))
 	}
 
 	const deleteContact=(email)=>{

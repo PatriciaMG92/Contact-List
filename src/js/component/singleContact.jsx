@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
 const SingleContact = ({name, address, phone, email, updateOneSingleContact, id, deleteContact}) =>{
+
+    const [fullNameInput, setFullNameInput] = useState(name);
+	const [phoneInput, setPhoneInput] = useState(phone);
+	const [addressInput, setAddressInput] = useState(address);
 
     return(
         <>
@@ -21,10 +25,38 @@ const SingleContact = ({name, address, phone, email, updateOneSingleContact, id,
                     </span>{email}</p>
                 </div>
                 <div className="col-3 align-items-center pt-3 gap-4">
-                    <span className="material-symbols-outlined pe-5" onClick={()=>{updateOneSingleContact(id)}}>edit</span>
+                    <span className="material-symbols-outlined pe-5" data-bs-toggle="modal" data-bs-target={`#update-modal${id}`}>edit</span>
                     <span className="material-symbols-outlined" data-bs-toggle="modal" data-bs-target={`#delete-modal${id}`}>delete</span>
                 </div>
             </li>
+            <div className="modal fade" id={`update-modal${id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Update contact:</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="mb-3">
+                                <label htmlFor="recipient-name" className="col-form-label">Nombre:</label>
+                                <input type="text" className="form-control" id="recipient-name" placeholder = {name} onChange={(e)=>{setFullNameInput(e.target.value)}}/>
+                            </div>
+                            <div className="mb-3">
+                                 <label    htmlFor="recipient-name" className="col-form-label">Phone:</label>
+                                  <input type="text" className="form-control" id="recipient-name" placeholder = {phone} onChange={(e)=>{setPhoneInput(e.target.value)}}/>
+                             </div>
+                             <div className="mb-3">
+                                 <label    htmlFor="recipient-name" className="col-form-label">Address:</label>
+                                 <input type="text" className="form-control" id="recipient-name" placeholder = {address} onChange={(e)=>{setAddressInput(e.target.value)}}/>
+                             </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=>{updateOneSingleContact(id, fullNameInput, email, phoneInput, addressInput)}}>Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div className="modal fade" id={`delete-modal${id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
@@ -38,7 +70,6 @@ const SingleContact = ({name, address, phone, email, updateOneSingleContact, id,
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                            <span>{email}</span>
                             <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=>{deleteContact(email)}} >Delete</button>
                         </div>
                     </div>
