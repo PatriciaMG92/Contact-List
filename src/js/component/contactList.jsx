@@ -5,14 +5,15 @@ import SingleContact from "./singleContact.jsx";
 //create your first component
 const ContactList = ({changeStateToTrue, allContacts, setAllContacts, getOneContact}) => {
    
-	const updateOneSingleContact=(id, fullNameInput, email, phoneInput, addressInput)=>{
+	const updateOneSingleContact=(id, fullNameInput, email, phoneInput, addressInput, optionInput)=>{
 		const contact = allContacts.get(email)
 		const newContact = {
 			...contact,
 			id: id,
 			name : fullNameInput,
 			phone: phoneInput,
-			address: addressInput
+			address: addressInput,
+			option: optionInput,
 		}
 		allContacts.set(email, newContact)
 		setAllContacts(new Map(allContacts))

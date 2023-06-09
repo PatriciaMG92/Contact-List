@@ -14,6 +14,7 @@ const Home = () => {
 	const [emailInput, setEmailInput] = useState();
 	const [phoneInput, setPhoneInput] = useState();
 	const [addressInput, setAddressInput] = useState();
+	const [optionInput, setOptionInput] = useState();
 
 	useEffect(()=>{
 		getAllContacts();
@@ -39,6 +40,9 @@ const Home = () => {
 		setAddressInput(e.target.value);
 	}
 
+	const handleChangeOption = (e) =>{
+		setOptionInput(e.target.value);
+	}
 
 	const saveChanges = (e)=>{
 		e.preventDefault();
@@ -50,13 +54,15 @@ const Home = () => {
 				name: fullNameInput,
 				email: emailInput,
 				phone: phoneInput,
-				address: addressInput}
+				address: addressInput,
+				option: optionInput}
 			) 
 			setAllContacts(allContacts);
 			setFullNameInput('');
 			setEmailInput('');
 			setPhoneInput('');
 			setAddressInput('');
+			setOptionInput('');
 		}
 		document.getElementById("fullName").value='';
 		document.getElementById("email").value='';
@@ -80,7 +86,7 @@ const Home = () => {
 		})
 		.then((users) => {
 			// setAllContacts(users);
-			users.forEach(({name, phone, email, address, id})=>{allContacts.set([Date.now(), {id: id, name:name, phone:phone, email: email, address:address }])})
+			users.forEach(({name, phone, email, address, option, id})=>{allContacts.set([Date.now(), {id: id, name: name, phone: phone, email: email, address: address, option: option }])})
 		})
 	}
 
@@ -145,7 +151,7 @@ const Home = () => {
 	if(isFormActivated == false){
 		return <ContactList changeStateToTrue={changeStateToTrue} allContacts={allContacts} setAllContacts={setAllContacts} getOneContact={getOneContact}/>
 	} else{
-		return <ContactForm changeStateToFalse={changeStateToFalse} handleChangeName={handleChangeName} handleChangeEmail={handleChangeEmail} handleChangePhone={handleChangePhone} handleChangeAddress={handleChangeAddress} saveChanges={saveChanges}/>
+		return <ContactForm changeStateToFalse={changeStateToFalse} handleChangeName={handleChangeName} handleChangeEmail={handleChangeEmail} handleChangePhone={handleChangePhone} handleChangeAddress={handleChangeAddress} handleChangeOption={handleChangeOption} saveChanges={saveChanges}/>
 	}
 	
 };

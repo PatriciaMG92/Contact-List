@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 
-const SingleContact = ({name, address, phone, email, updateOneSingleContact, id, deleteContact}) =>{
+const SingleContact = ({name, address, phone, email, option, updateOneSingleContact, id, deleteContact}) =>{
 
     const [fullNameInput, setFullNameInput] = useState(name);
 	const [phoneInput, setPhoneInput] = useState(phone);
 	const [addressInput, setAddressInput] = useState(address);
+    const [optionInput, setOptionInput] = useState(option);
 
     return(
         <>
@@ -23,6 +24,10 @@ const SingleContact = ({name, address, phone, email, updateOneSingleContact, id,
                     <p id="p_Email" className="d-flex gap-2"><span className="material-symbols-outlined">
                         mail
                     </span>{email}</p>
+                    <p id="p_Email" className="d-flex gap-2">
+                    <span className="material-symbols-outlined">
+                        grade
+                    </span>{option}</p>
                 </div>
                 <div className="col-3 align-items-center pt-3 gap-4">
                     <span className="material-symbols-outlined pe-5" data-bs-toggle="modal" data-bs-target={`#update-modal${id}`}>edit</span>
@@ -49,10 +54,19 @@ const SingleContact = ({name, address, phone, email, updateOneSingleContact, id,
                                  <label    htmlFor="recipient-name" className="col-form-label">Address:</label>
                                  <input type="text" className="form-control" id="recipient-name" placeholder = {address} onChange={(e)=>{setAddressInput(e.target.value)}}/>
                              </div>
+                             <div className="mb-3">
+                                 <label    htmlFor="recipient-name" className="col-form-label">Option:</label>
+                                 <select className="form-select" onChange={(e)=>{setOptionInput(e.target.value)}}>
+                                    <option defaultValue>{option}</option>
+                                    <option value="Family">Family</option>
+                                    <option value="Co-worker">Co-worker</option>
+                                    <option value="Friend">Friend</option>
+                                </select>
+                             </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=>{updateOneSingleContact(id, fullNameInput, email, phoneInput, addressInput)}}>Save changes</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=>{updateOneSingleContact(id, fullNameInput, email, phoneInput, addressInput, optionInput)}}>Save changes</button>
                         </div>
                     </div>
                 </div>
