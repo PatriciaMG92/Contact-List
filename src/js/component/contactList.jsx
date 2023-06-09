@@ -26,13 +26,13 @@ const ContactList = ({changeStateToTrue, allContacts, setAllContacts, getOneCont
 
 	return (
 		<>
-            <div className="container-fluid bg-black p-3">
-				<div className="container bg-white w-75">
+            <div className="container-fluid p-3 mt-5">
+				<div className="container w-75">
 					<div className="d-flex justify-content-end p-3 pe-4">
 						<button onClick={()=>changeStateToTrue()} className="btn btn-success">Add new contact</button>
 					</div>
 					<div>
-						<ul className="list-group text-start border">
+						<ul className="list-group bg-white text-start p-2" style={{border: '2px solid rgb(113, 15, 41)'}}>
 							{Array.from(allContacts.values()).map((item, index)=>{return <SingleContact  {...item} id={item.id} key={index} updateOneSingleContact={updateOneSingleContact} deleteContact={deleteContact}/>})}
             			</ul>
 					</div>

@@ -9,7 +9,7 @@ const SingleContact = ({name, address, phone, email, option, updateOneSingleCont
 
     return(
         <>
-            <li className="row pb-2 pt-2 border-bottom">
+            <li className="row mb-2 pb-2 pt-2 mx-1" style={{borderBottom: '1px solid rgb(231, 48, 97)'}}>
                 <div className="col-3 ps-5">
                     <img id="image" src="https://th.bing.com/th/id/R.a2de0db2291fe6bcd40ca28111ac2a67?rik=Hxv4cBjQsGT4bQ&pid=ImgRaw&r=0"></img>
                 </div>
@@ -30,8 +30,8 @@ const SingleContact = ({name, address, phone, email, option, updateOneSingleCont
                     </span>{option}</p>
                 </div>
                 <div className="col-3 align-items-center pt-3 gap-4">
-                    <span className="material-symbols-outlined pe-5" data-bs-toggle="modal" data-bs-target={`#update-modal${id}`}>edit</span>
-                    <span className="material-symbols-outlined" data-bs-toggle="modal" data-bs-target={`#delete-modal${id}`}>delete</span>
+                    <span className="material-symbols-outlined pe-5" style={{color: '#00BFFF'}} data-bs-toggle="modal" data-bs-target={`#update-modal${id}`}>edit</span>
+                    <span className="material-symbols-outlined" style={{color: '#B22222'}} data-bs-toggle="modal" data-bs-target={`#delete-modal${id}`}>delete</span>
                 </div>
             </li>
             <div className="modal fade" id={`update-modal${id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,8 +65,8 @@ const SingleContact = ({name, address, phone, email, option, updateOneSingleCont
                              </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=>{updateOneSingleContact(id, fullNameInput, email, phoneInput, addressInput, optionInput)}}>Save changes</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={()=>{updateOneSingleContact(id, fullNameInput, email, phoneInput, addressInput, optionInput)}}>Save changes</button>
                         </div>
                     </div>
                 </div>

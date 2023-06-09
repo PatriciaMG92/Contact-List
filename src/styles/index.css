@@ -1,3 +1,8 @@
+body{
+    background-image: url("https://th.bing.com/th/id/R.d427dc8c2d5aed85041e0452ff37da25?rik=yMopskCNFze09A&pid=ImgRaw&r=0");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 #image{
     width:9rem;
     height:9rem;
@@ -29,4 +34,41 @@
 
 span:hover{
     cursor: pointer;
+}
+
+.form-label{
+    color: #FFD700;
+    text-shadow: 2px 2px #2a2a2a;
+}
+.form-control.input{
+    border-color: #292828;
+    border-style: groove;
+}
+.form-control.input:focus{
+    background-color: #fdf3bb;
+    border-style: groove;
+}
+.form-select.input:focus{
+    background-color: #fdf3bb;
+    border-style: groove;
+}
+.save{
+    color: white;
+    border: 1px solid #ffe344;
+    background-color: rgb(231, 48, 97);
+}
+.save:hover{
+    color: white;
+    background-color: rgb(254, 54, 107);
+    border-color: white;
+    box-shadow: 0 0 10px #fcfcfc;
+}
+.btn-link{
+    color: #fdf3bb;
+}
+.btn-link:hover{
+    color: #ffe344;
+}
+.contact{
+    border-color:rgb(231, 48, 97);
 }
